@@ -10,7 +10,7 @@
         // Columns
         public $id;
         public $fecha;
-        public $avillamante;
+        public $anillamante;
         public $dnis;
         public $aniguardia;
 
@@ -21,7 +21,7 @@
 
         // GET ALL
         public function getGdA_Audits(){
-            $sqlQuery = "SELECT id, fecha, avillamante, dnis, aniguardia  FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT id, fecha, anillamante, dnis, aniguardia  FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -33,7 +33,7 @@
                         ". $this->db_table ."
                     SET
                         fecha = :fecha, 
-                        avillamante = :avillamante, 
+                        anillamante = :anillamante, 
                         dnis = :dnis, 
                         aniguardia = :aniguardia;
         
@@ -41,13 +41,13 @@
         
             // sanitize
             $this->fecha=htmlspecialchars(strip_tags($this->fecha));
-            $this->avillamante=htmlspecialchars(strip_tags($this->avillamante));
+            $this->anillamante=htmlspecialchars(strip_tags($this->anillamante));
             $this->dnis=htmlspecialchars(strip_tags($this->dnis));
             $this->aniguardia=htmlspecialchars(strip_tags($this->aniguardia));
             
             // bind data
             $stmt->bindParam(":fecha", $this->fecha);
-            $stmt->bindParam(":avillamante", $this->avillamante);
+            $stmt->bindParam(":anillamante", $this->anillamante);
             $stmt->bindParam(":dnis", $this->dnis);
             $stmt->bindParam(":aniguardia", $this->aniguardia);
             
@@ -63,7 +63,7 @@
             $sqlQuery = "SELECT
                         id, 
                         fecha, 
-                        avillamante, 
+                        anillamante, 
                         dnis, 
                         aniguardia 
                         
@@ -82,7 +82,7 @@
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
             $this->fecha = $dataRow['fecha'];
-            $this->avillamante = $dataRow['avillamante'];
+            $this->anillamante = $dataRow['anillamante'];
             $this->dnis = $dataRow['dnis'];
             $this->aniguardia = $dataRow['aniguardia'];
             
@@ -94,7 +94,7 @@
                         ". $this->db_table ."
                     SET
                         fecha = :fecha, 
-                        avillamante = :avillamante, 
+                        anillamante = :anillamante, 
                         dnis = :dnis, 
                         aniguardia = :aniguardia
                     WHERE 
@@ -103,14 +103,14 @@
             $stmt = $this->conn->prepare($sqlQuery);
         
             $this->fecha=htmlspecialchars(strip_tags($this->fecha));
-            $this->avillamante=htmlspecialchars(strip_tags($this->avillamante));
+            $this->anillamante=htmlspecialchars(strip_tags($this->anillamante));
             $this->dnis=htmlspecialchars(strip_tags($this->dnis));
             $this->aniguardia=htmlspecialchars(strip_tags($this->aniguardia));
             $this->id=htmlspecialchars(strip_tags($this->id));
         
             // bind data
             $stmt->bindParam(":fecha", $this->fecha);
-            $stmt->bindParam(":avillamante", $this->avillamante);
+            $stmt->bindParam(":anillamante", $this->anillamante);
             $stmt->bindParam(":dnis", $this->dnis);
             $stmt->bindParam(":aniguardia", $this->aniguardia);
             $stmt->bindParam(":id", $this->id);
