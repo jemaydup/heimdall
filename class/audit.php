@@ -35,7 +35,7 @@
                         fecha = :fecha, 
                         anillamante = :anillamante, 
                         dnis = :dnis, 
-                        aniguardia = :aniguardia;
+                        aniguardia = :aniguardia";
         
             $stmt = $this->conn->prepare($sqlQuery);
         

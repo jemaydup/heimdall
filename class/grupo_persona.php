@@ -1,11 +1,11 @@
 <?php
-    class Employee{
+    class GdA_Grupo_Persona{
 
         // Connection
         private $conn;
 
         // Table
-        private $db_table = "Employee";
+        private $db_table = "GdA_Grupo_Persona";
 
         // Columns
         public $id;
@@ -21,7 +21,7 @@
         }
 
         // GET ALL
-        public function getEmployees(){
+        public function getGdA_Grupo_Personas(){
             $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
@@ -29,7 +29,7 @@
         }
 
         // CREATE
-        public function createEmployee(){
+        public function createGdA_Grupo_Persona(){
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
@@ -62,7 +62,7 @@
         }
 
         // UPDATE
-        public function getSingleEmployee(){
+        public function getSingleGdA_Grupo_Persona(){
             $sqlQuery = "SELECT
                         id, 
                         name, 
@@ -92,7 +92,7 @@
         }        
 
         // UPDATE
-        public function updateEmployee(){
+        public function updateGdA_Grupo_Persona(){
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
@@ -128,7 +128,7 @@
         }
 
         // DELETE
-        function deleteEmployee(){
+        function deleteGdA_Grupo_Persona(){
             $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
