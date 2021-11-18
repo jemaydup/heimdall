@@ -13,7 +13,6 @@
         public $avillamante;
         public $dnis;
         public $aniguardia;
-        public $;
 
         // Db connection
         public function __construct($db){
