@@ -3,7 +3,7 @@
     header("Content-Type: application/json; charset=UTF-8");
     
     include_once '../config/database.php';
-    include_once '../class/grupo.php';
+    include_once '../../class/grupo.php';
 
     $database = new Database();
     $db = $database->getConnection();
@@ -25,7 +25,7 @@
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
-                "IDGrupo" => $IDGrupoid,
+                "IDGrupo" => $IDGrupo,
                 "Nombre_grupo" => $Nombre_grupo,
                 "RP" => $RP,
                 "Activo" => $Activo
