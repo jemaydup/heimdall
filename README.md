@@ -1,4 +1,6 @@
-# Class
+# WEB de Guardia CIO
+
+## Class
 - Audit
 - Guardia
 - Grupo
@@ -24,9 +26,11 @@
 - Grupo_Persona
 
 
-
+<!--
 * `GET - http://localhost:8080/api/grupo/read.php` Fetch ALL Records
 * `GET - localhost:8080/api/persona/single_read.php/?id=2` Fetch Single Record
 * `POST - http://localhost:8080/api/persona/create.php` Create Record
 * `POST - http://localhost:8080/api/role/update.php` Update Record
 * `DELETE - localhost:8080/api/persona/delete.php` Remove Records
+-->
+- dd
