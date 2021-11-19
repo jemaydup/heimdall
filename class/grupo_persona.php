@@ -8,12 +8,11 @@
         private $db_table = "GdA_Grupo_Persona";
 
         // Columns
-        public $id;
-        public $name;
-        public $email;
-        public $age;
-        public $designation;
-        public $created;
+        public $IDGrupo;
+        public $IDPersona;
+        public $IDRole;
+        public $status;
+        
 
         // Db connection
         public function __construct($db){
@@ -22,7 +21,7 @@
 
         // GET ALL
         public function getGdA_Grupo_Personas(){
-            $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT IDGrupo, IDPersona, IDRole, status FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -33,28 +32,25 @@
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
-                        name = :name, 
-                        email = :email, 
-                        age = :age, 
-                        designation = :designation, 
-                        created = :created";
+                        IDGrupo = :IDGrupo,
+                        IDPersona = :IDPersona, 
+                        IDRole = :IDRole, 
+                        status = :status";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
-        
+            $this->IDGrupo=htmlspecialchars(strip_tags($this->IDGrupo));
+            $this->IDPersona=htmlspecialchars(strip_tags($this->IDPersona));
+            $this->IDRole=htmlspecialchars(strip_tags($this->IDRole));
+            $this->status=htmlspecialchars(strip_tags($this->status));
+            
             // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
-        
+            $stmt->bindParam(":IDGrupo", $this->IDPersona);
+            $stmt->bindParam(":IDPersona", $this->IDPersona);
+            $stmt->bindParam(":IDRole", $this->IDRole);
+            $stmt->bindParam(":status", $this->status);
+  
             if($stmt->execute()){
                return true;
             }
@@ -64,31 +60,31 @@
         // UPDATE
         public function getSingleGdA_Grupo_Persona(){
             $sqlQuery = "SELECT
-                        id, 
-                        name, 
-                        email, 
-                        age, 
+                        IDGrupo, 
+                        IDPersona, 
+                        IDRole, 
+                        status, 
                         designation, 
                         created
                       FROM
                         ". $this->db_table ."
                     WHERE 
-                       id = ?
+                       IDGrupo = ?
                     LIMIT 0,1";
 
             $stmt = $this->conn->prepare($sqlQuery);
 
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(1, $this->IDGrupo);
 
             $stmt->execute();
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $this->name = $dataRow['name'];
-            $this->email = $dataRow['email'];
-            $this->age = $dataRow['age'];
-            $this->designation = $dataRow['designation'];
-            $this->created = $dataRow['created'];
+
+            $this->IDGrupo = $dataRow['IDGrupo'];
+            $this->IDPersona = $dataRow['IDPersona'];
+            $this->IDRole = $dataRow['IDRole'];
+            $this->status = $dataRow['status'];
+           
         }        
 
         // UPDATE
@@ -96,30 +92,27 @@
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
-                        name = :name, 
-                        email = :email, 
-                        age = :age, 
+                        IDPersona = :IDPersona, 
+                        IDRole = :IDRole, 
+                        status = :status, 
                         designation = :designation, 
                         created = :created
                     WHERE 
-                        id = :id";
+                        IDGrupo = :IDGrupo";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->IDGrupo=htmlspecialchars(strip_tags($this->IDGrupo));
+            $this->IDPersona=htmlspecialchars(strip_tags($this->IDPersona));
+            $this->IDRole=htmlspecialchars(strip_tags($this->IDRole));
+            $this->status=htmlspecialchars(strip_tags($this->status));
+            
         
             // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
-            $stmt->bindParam(":id", $this->id);
+            $stmt->bindParam(":IDGrupo", $this->IDPersona);
+            $stmt->bindParam(":IDPersona", $this->IDPersona);
+            $stmt->bindParam(":IDRole", $this->IDRole);
+            $stmt->bindParam(":status", $this->status);
         
             if($stmt->execute()){
                return true;
@@ -129,12 +122,12 @@
 
         // DELETE
         function deleteGdA_Grupo_Persona(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE IDGrupo = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->IDGrupo=htmlspecialchars(strip_tags($this->IDGrupo));
         
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(1, $this->IDGrupo);
         
             if($stmt->execute()){
                 return true;
