@@ -22,8 +22,7 @@
         $Grupo_arr = array(
             "IDGrupo" =>  $item->IDGrupo,
             "Nombre_grupo" => $item->Nombre_grupo,
-            "RP" => $item->RP,
-            "Activo" => $item->Activo
+            "RP" => $item->RP
         );
       
         http_response_code(200);
