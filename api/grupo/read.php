@@ -2,7 +2,7 @@
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
     
-    include_once '../config/database.php';
+    include_once '../../config/database.php';
     include_once '../../class/grupo.php';
 
     $database = new Database();
@@ -14,13 +14,13 @@
     $itemCount = $stmt->rowCount();
 
 
-    echo json_encode($itemCount);
+   // echo json_encode($itemCount);
 
     if($itemCount > 0){
         
         $GdA_GrupoArr = array();
         $GdA_GrupoArr["body"] = array();
-        $GdA_GrupoArr["itemCount"] = $itemCount;
+        #$GdA_GrupoArr["itemCount"] = $itemCount;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
