@@ -6,24 +6,24 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     include_once '../config/database.php';
-    include_once '../class/employees.php';
+    include_once '../class/grupo.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $item = new Employee($db);
+    $item = new Grupo($db);
 
     $data = json_decode(file_get_contents("php://input"));
 
-    $item->name = $data->name;
-    $item->email = $data->email;
-    $item->age = $data->age;
-    $item->designation = $data->designation;
-    $item->created = date('Y-m-d H:i:s');
+    $item->Nombre_grupo = $data->Nombre_grupo;
+    $item->RP = $data->RP;
+    $item->Activo = $data->Activo;
+    $item->IDGrupo = $data->deIDGruposignation;
+  
     
-    if($item->createEmployee()){
-        echo 'Employee created successfully.';
+    if($item->createGdA_Grupo()){
+        echo 'Grupo created successfully.';
     } else{
-        echo 'Employee could not be created.';
+        echo 'Grupo could not be created.';
     }
 ?>

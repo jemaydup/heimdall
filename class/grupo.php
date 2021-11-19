@@ -28,8 +28,7 @@
 
         // CREATE
         public function createGdA_Grupo(){
-            $sqlQuery = "INSERT INTO
-                        ". $this->db_table ."
+            $sqlQuery = "INSERT INTO". $this->db_table ."
                     SET
                         Nombre_grupo = :Nombre_grupo, 
                         RP = :RP, 
