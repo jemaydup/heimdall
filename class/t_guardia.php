@@ -37,7 +37,7 @@
                     Status = :Status" ;
         
             $stmt = $this->conn->prepare($sqlQuery);
-        
+            
             // sanitize
             $this->Legajo=htmlspecialchars(strip_tags($this->Legajo));
             $this->Nombre=htmlspecialchars(strip_tags($this->Nombre));
