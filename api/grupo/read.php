@@ -8,7 +8,7 @@
     $database = new Database();
     $db = $database->getConnection();
 
-    $items = new Employee($db);
+    $items = new GdA_Grupo($db);
 
     $stmt = $items->getGdA_Grupos();
     $itemCount = $stmt->rowCount();
