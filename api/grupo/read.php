@@ -28,7 +28,7 @@
                 "IDGrupo" => $IDGrupo,
                 "Nombre_grupo" => $Nombre_grupo,
                 "RP" => $RP,
-                "Activo" => $Activo
+               ## "Activo" => $Activo
             );
 
             array_push($GdA_GrupoArr["body"], $e);

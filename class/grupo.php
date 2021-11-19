@@ -20,7 +20,7 @@
 
         // GET ALL
         public function getGdA_Grupos(){
-            $sqlQuery = "SELECT IDGrupo, Nombre_grupo, RP, Activo   FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT IDGrupo, Nombre_grupo, RP   FROM " . $this->db_table . " WHERE Activo = '1'";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -69,7 +69,7 @@
                       FROM
                         ". $this->db_table ."
                     WHERE 
-                       IDGrupo = ?
+                       IDGrupo = ? 
                     LIMIT 0,1";
 
             $stmt = $this->conn->prepare($sqlQuery);

@@ -5,35 +5,33 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-    include_once '../config/database.php';
-    include_once '../class/employees.php';
+    include_once '../../config/database.php';
+    include_once '../../class/grupo.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $item = new Employee($db);
+    $item = new GdA_Grupo($db);
 
-    $item->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $item->IDGrupo = isset($_GET['IDGrupo']) ? $_GET['IDGrupo'] : die();
   
-    $item->getSingleEmployee();
+    $item->getSingleGdA_Grupo();
 
-    if($item->name != null){
+    if($item->Nombre_grupo != null){
         // create array
-        $emp_arr = array(
-            "id" =>  $item->id,
-            "name" => $item->name,
-            "email" => $item->email,
-            "age" => $item->age,
-            "designation" => $item->designation,
-            "created" => $item->created
+        $Grupo_arr = array(
+            "IDGrupo" =>  $item->IDGrupo,
+            "Nombre_grupo" => $item->Nombre_grupo,
+            "RP" => $item->RP,
+            "Activo" => $item->Activo
         );
       
         http_response_code(200);
-        echo json_encode($emp_arr);
+        echo json_encode($Grupo_arr);
     }
       
     else{
         http_response_code(404);
-        echo json_encode("Employee not found.");
+        echo json_encode("Grupo not found.");
     }
 ?>
