@@ -62,13 +62,10 @@
             $sqlQuery = "SELECT
                         IDGrupo, 
                         Nombre_grupo, 
-                        RP, 
-                        Activo, 
-                         
-                        
+                        RP
                       FROM
                         ". $this->db_table ."
-                    WHERE 
+                    WHERE Activo = '1' and 
                        IDGrupo = ? 
                     LIMIT 0,1";
 
