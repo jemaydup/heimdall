@@ -6,19 +6,19 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
     include_once '../config/database.php';
-    include_once '../class/employees.php';
+    include_once '../class/grupo.php';
     
     $database = new Database();
     $db = $database->getConnection();
     
-    $item = new Employee($db);
+    $item = new grupo($db);
     
     $data = json_decode(file_get_contents("php://input"));
     
-    $item->id = $data->id;
+    $item->IDGrupo = $data->IDGrupo;
     
     if($item->deleteEmployee()){
-        echo json_encode("Employee deleted.");
+        echo json_encode("Grupo deleted.");
     } else{
         echo json_encode("Data could not be deleted");
     }
