@@ -58,14 +58,14 @@
         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            // sanitize
+            // sanitize Completar Campos
             $this->Role_Nombre=htmlspecialchars(strip_tags($this->Role_Nombre));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->age=htmlspecialchars(strip_tags($this->age));
             $this->designation=htmlspecialchars(strip_tags($this->designation));
             $this->created=htmlspecialchars(strip_tags($this->created));
         
-            // bind data
+            // bind data Completar Campos
             $stmt->bindParam(":Role_Nombre", $this->Role_Nombre);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":age", $this->age);
@@ -105,55 +105,62 @@
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
-                    idrolerole = :idrolerole,
-                    Role_Nombre = :Role_Nombre,
-  `status` tinyint(1) NOT NULL,
-  `persona_alta` tinyint(1) NOT NULL,
-  `persona_baja` tinyint(1) NOT NULL,
-  `persona_consulta` tinyint(1) NOT NULL,
-  `persona_modificar` tinyint(1) NOT NULL,
-  `grupo_alta` tinyint(1) NOT NULL,
-  `grupo_baja` tinyint(1) NOT NULL,
-  `grupo_consulta` tinyint(1) NOT NULL,
-  `grupo_modificar` tinyint(1) NOT NULL,
-  `role_alta` tinyint(1) NOT NULL,
-  `role_baja` tinyint(1) NOT NULL,
-  `role_consulta` tinyint(1) NOT NULL,
-  `role_modificar` tinyint(1) NOT NULL,
-  `grupo_persona_alta` tinyint(1) NOT NULL,
-  `grupo_persona_baja` tinyint(1) NOT NULL,
-  `grupo_persona_consulta` tinyint(1) NOT NULL,
-  `grupo_persona_modificar` tinyint(1) NOT NULL,
-  `audit alta` tinyint(1) NOT NULL,
-  `audit_modificar` tinyint(1) NOT NULL,
-  `audit_baja` tinyint(1) NOT NULL,
-  `audit_consulta` tinyint(1) NOT NULL
-
-                        Role_Nombre = :Role_Nombre, 
-                        email = :email, 
-                        age = :age, 
-                        designation = :designation, 
-                        created = :created
+                    idrolerole, 
+                    Role_Nombre, 
+                    status, 
+                    persona_alta, 
+                    persona_baja, 
+                    persona_consulta, 
+                    persona_modificar, 
+                    grupo_alta, 
+                    grupo_baja, 
+                    grupo_consulta, 
+                    grupo_modificar, 
+                    role_alta, 
+                    role_baja, 
+                    role_consulta, 
+                    role_modificar, 
+                    grupo_persona_alta, 
+                    grupo_persona_baja, 
+                    grupo_persona_consulta, 
+                    grupo_persona_modificar, 
+                    audit_alta, 
+                    audit_modificar, 
+                    audit_baja, 
+                    audit_consulta
                     WHERE 
                         idrole = :idrole";
         
             $stmt = $this->conn->prepare($sqlQuery);
-        
+        //completar campos
             $this->Role_Nombre=htmlspecialchars(strip_tags($this->Role_Nombre));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
-            $this->idrole=htmlspecialchars(strip_tags($this->idrole));
+            $this->idrolerole=htmlspecialchars(strip_tags($this->Role_Nombre)); 
+                    Role_Nombre, 
+                    status, 
+                    persona_alta, 
+                    persona_baja, 
+                    persona_consulta, 
+                    persona_modificar, 
+                    grupo_alta, 
+                    grupo_baja, 
+                    grupo_consulta, 
+                    grupo_modificar, 
+                    role_alta, 
+                    role_baja, 
+                    role_consulta, 
+                    role_modificar, 
+                    grupo_persona_alta, 
+                    grupo_persona_baja, 
+                    grupo_persona_consulta, 
+                    grupo_persona_modificar, 
+                    audit_alta, 
+                    audit_modificar, 
+                    audit_baja, 
+                    audit_consulta
+           
         
-            // bind data
+            // bind data Completar campos
             $stmt->bindParam(":Role_Nombre", $this->Role_Nombre);
-            $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
-            $stmt->bindParam(":idrole", $this->idrole);
         
             if($stmt->execute()){
                return true;
