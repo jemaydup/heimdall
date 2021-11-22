@@ -8,7 +8,7 @@
         private $db_table = "GdA_Role";
 
         // Columns+
-       public $idrolerole;
+       public $idrole;
        public $Role_Nombre;# varchar(50) NOT NULL,
        public $status; # tinyint(1) NOT NULL,
        public $persona_alta; #; #inyint(1) NOT NULL,
@@ -39,7 +39,7 @@
 
         // GET ALL
         public function getRole(){
-            $sqlQuery = "SELECT idrolerole, Role_Nombre, status, persona_alta, persona_baja, persona_consulta, persona_modificar, grupo_alta, grupo_baja, grupo_consulta, grupo_modificar, role_alta, role_baja, role_consulta, role_modificar, grupo_persona_alta, grupo_persona_baja, grupo_persona_consulta, grupo_persona_modificar, audit_alta, audit_modificar, audit_baja, audit_consulta FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -50,7 +50,7 @@
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
-                        Role_Nombre = :Role_Nombre, 
+                        name = :name, 
                         email = :email, 
                         age = :age, 
                         designation = :designation, 
@@ -59,14 +59,14 @@
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->Role_Nombre=htmlspecialchars(strip_tags($this->Role_Nombre));
+            $this->name=htmlspecialchars(strip_tags($this->name));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->age=htmlspecialchars(strip_tags($this->age));
             $this->designation=htmlspecialchars(strip_tags($this->designation));
             $this->created=htmlspecialchars(strip_tags($this->created));
         
             // bind data
-            $stmt->bindParam(":Role_Nombre", $this->Role_Nombre);
+            $stmt->bindParam(":name", $this->name);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":age", $this->age);
             $stmt->bindParam(":designation", $this->designation);
@@ -79,21 +79,29 @@
         }
 
         // UPDATE
-        public function getSingleRole(){
-            $sqlQuery = "SELECT idrolerole, Role_Nombre, status, persona_alta, persona_baja, persona_consulta, persona_modificar, grupo_alta, grupo_baja, grupo_consulta, grupo_modificar, role_alta, role_baja, role_consulta, role_modificar, grupo_persona_alta, grupo_persona_baja, grupo_persona_consulta, grupo_persona_modificar, audit_alta, audit_modificar, audit_baja, audit_consulta FROM ". $this->db_table ."
+        public function getSingleEmployee(){
+            $sqlQuery = "SELECT
+                        id, 
+                        name, 
+                        email, 
+                        age, 
+                        designation, 
+                        created
+                      FROM
+                        ". $this->db_table ."
                     WHERE 
-                       idrole = ?
+                       id = ?
                     LIMIT 0,1";
 
             $stmt = $this->conn->prepare($sqlQuery);
 
-            $stmt->bindParam(1, $this->idrole);
+            $stmt->bindParam(1, $this->id);
 
             $stmt->execute();
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $this->Role_Nombre = $dataRow['Role_Nombre'];
+            $this->name = $dataRow['name'];
             $this->email = $dataRow['email'];
             $this->age = $dataRow['age'];
             $this->designation = $dataRow['designation'];
@@ -105,7 +113,7 @@
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
-                    idrolerole = :idrolerole,
+                    idrole = :idrole,
                     Role_Nombre = :Role_Nombre,
   `status` tinyint(1) NOT NULL,
   `persona_alta` tinyint(1) NOT NULL,
@@ -129,31 +137,30 @@
   `audit_baja` tinyint(1) NOT NULL,
   `audit_consulta` tinyint(1) NOT NULL
 
-                        Role_Nombre = :Role_Nombre, 
+                        name = :name, 
                         email = :email, 
                         age = :age, 
                         designation = :designation, 
                         created = :created
                     WHERE 
-                        idrole = :idrole";
+                        id = :id";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->Role_Nombre=htmlspecialchars(strip_tags($this->Role_Nombre));
+            $this->name=htmlspecialchars(strip_tags($this->name));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->age=htmlspecialchars(strip_tags($this->age));
-
             $this->designation=htmlspecialchars(strip_tags($this->designation));
             $this->created=htmlspecialchars(strip_tags($this->created));
-            $this->idrole=htmlspecialchars(strip_tags($this->idrole));
+            $this->id=htmlspecialchars(strip_tags($this->id));
         
             // bind data
-            $stmt->bindParam(":Role_Nombre", $this->Role_Nombre);
+            $stmt->bindParam(":name", $this->name);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":age", $this->age);
             $stmt->bindParam(":designation", $this->designation);
             $stmt->bindParam(":created", $this->created);
-            $stmt->bindParam(":idrole", $this->idrole);
+            $stmt->bindParam(":id", $this->id);
         
             if($stmt->execute()){
                return true;
@@ -163,10 +170,10 @@
 
         // DELETE
         function deleteRole(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE idrolerole = ?";
+            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE idrole = ?";
             $stmt = $this->conn->prepare($sqlQuery);
-            $this->idrolerole=htmlspecialchars(strip_tags($this->idrolerole));
-            $stmt->bindParam(1, $this->idrolerole);
+            $this->idrole=htmlspecialchars(strip_tags($this->idrole));
+            $stmt->bindParam(1, $this->idrole);
             if($stmt->execute()){
                 return true;
             }
@@ -175,3 +182,4 @@
 
     }
 ?>
+
