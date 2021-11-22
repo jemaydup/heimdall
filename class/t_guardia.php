@@ -71,24 +71,19 @@
             AND gda_persona.Guardia = 1
             AND gda_grupo.Activo = 1
             AND gda_persona.Status= 1
-             and gda_role.idrole in (3,2)
-              and gda_grupo.RP=" .$_GET['origen'];
+            AND gda_role.idrole in (3,2)
+            AND gda_grupo.RP=" .$_GET['origen'];
 
             $stmt = $this->conn->prepare($sqlQuery);
 
-            $stmt->bindParam(1, $this->Legajo);
+            $stmt->bindParam(1, $this->ANI);
 
             $stmt->execute();
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $this->Legajo = $dataRow['Legajo'];
-            $this->Nombre = $dataRow['Nombre'];
-            $this->Apellido = $dataRow['Apellido'];
+
             $this->ANI = $dataRow['ANI'];
-            $this->Guardia = $dataRow['Guardia'];
-            $this->Password = $dataRow['Password'];
-            $this->Status = $dataRow['Status'];
+            
         }        
 
         // UPDATE
@@ -96,35 +91,23 @@
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
-                        Legajo = :Legajo, 
-                        Nombre = :Nombre, 
-                        Apellido = :Apellido, 
-                        ANI = :ANI, 
                         Guardia = :Guardia,
-                        Password = :Password
-                        Status = :Status
                     WHERE 
                         Legajo = :Legajo";
         
             $stmt = $this->conn->prepare($sqlQuery);
            
             $this->Legajo=htmlspecialchars(strip_tags($this->Legajo));
-            $this->Nombre=htmlspecialchars(strip_tags($this->Nombre));
-            $this->Apellido=htmlspecialchars(strip_tags($this->Apellido));
             $this->ANI=htmlspecialchars(strip_tags($this->ANI));
             $this->Guardia=htmlspecialchars(strip_tags($this->Guardia));
-            $this->Password=htmlspecialchars(strip_tags($this->Password));
-            $this->Status=htmlspecialchars(strip_tags($this->Status));
+            
 
         
             // bind data
             $stmt->bindParam(":Legajo", $this->Legajo);
-            $stmt->bindParam(":Nombre", $this->Nombre);
-            $stmt->bindParam(":Apellido", $this->Apellido);
             $stmt->bindParam(":ANI", $this->ANI);
             $stmt->bindParam(":Guardia", $this->Guardia);
-            $stmt->bindParam(":Password", $this->Password);
-            $stmt->bindParam(":Status", $this->Status);
+        
 
             if($stmt->execute()){
                return true;
