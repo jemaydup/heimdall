@@ -9,28 +9,28 @@
 
         // Columns+
        public $idrolerole;
-       public $Role_Nombre;# varchar(50) NOT NULL,
-       public $status; # tinyint(1) NOT NULL,
-       public $persona_alta; #; #inyint(1) NOT NULL,
-       public $persona_baja; #; #inyint(1) NOT NULL,
-       public $persona_consulta; #inyint(1) NOT NULL,
-       public $persona_modificar; # tinyint(1) NOT NULL,
-       public $grupo_alta; # tinyint(1) NOT NULL,
-       public $grupo_baja; # tinyint(1) NOT NULL,
-       public $grupo_consulta; # tinyint(1) NOT NULL,
-       public $grupo_modificar; # tinyint(1) NOT NULL, 
-       public $role_alta; #inyint(1) NOT NULL,
-       public $role_baja; #inyint(1) NOT NULL,
-       public $role_consulta; #inyint(1) NOT NULL,
-       public $role_modificar; #inyint(1) NOT NULL,
-       public $grupo_persona_alta; #inyint(1) NOT NULL,
-       public $grupo_persona_baja; #inyint(1) NOT NULL,
-       public $grupo_persona_consulta; #inyint(1) NOT NULL,
-       public $grupo_persona_modificar; #inyint(1) NOT NULL,
-       public $audit_alta; #inyint(1) NOT NULL,
-       public $audit_modificar; #inyint(1) NOT NULL,
-       public $audit_baja; #inyint(1) NOT NULL,
-       public $audit_consulta; #inyint(1) NOT NULL
+       public $Role_Nombre;
+       public $status;
+       public $persona_alta;
+       public $persona_baja;
+       public $persona_consulta; 
+       public $persona_modificar;
+       public $grupo_alta;
+       public $grupo_baja;
+       public $grupo_consulta;
+       public $grupo_modificar; 
+       public $role_alta; 
+       public $role_baja; 
+       public $role_consulta; 
+       public $role_modificar; 
+       public $grupo_persona_alta; 
+       public $grupo_persona_baja; 
+       public $grupo_persona_consulta; 
+       public $grupo_persona_modificar; 
+       public $audit_alta; 
+       public $audit_modificar; 
+       public $audit_baja; 
+       public $audit_consulta; 
 
         // Db connection
         public function __construct($db){
@@ -133,30 +133,29 @@
         
             $stmt = $this->conn->prepare($sqlQuery);
         //completar campos
-            $this->Role_Nombre=htmlspecialchars(strip_tags($this->Role_Nombre));
-            $this->idrolerole=htmlspecialchars(strip_tags($this->Role_Nombre)); 
-                    Role_Nombre, 
-                    status, 
-                    persona_alta, 
-                    persona_baja, 
-                    persona_consulta, 
-                    persona_modificar, 
-                    grupo_alta, 
-                    grupo_baja, 
-                    grupo_consulta, 
-                    grupo_modificar, 
-                    role_alta, 
-                    role_baja, 
-                    role_consulta, 
-                    role_modificar, 
-                    grupo_persona_alta, 
-                    grupo_persona_baja, 
-                    grupo_persona_consulta, 
-                    grupo_persona_modificar, 
-                    audit_alta, 
-                    audit_modificar, 
-                    audit_baja, 
-                    audit_consulta
+            $this->idrolerole=htmlspecialchars(strip_tags($this->idrolerole)); 
+            $this->Role_Nombre=htmlspecialchars(strip_tags($this->; 
+            $this->status=htmlspecialchars(strip_tags($this->; 
+            $this->persona_alta=htmlspecialchars(strip_tags($this->; 
+            $this->persona_baja=htmlspecialchars(strip_tags($this->; 
+            $this->persona_consulta=htmlspecialchars(strip_tags($this->; 
+            $this->persona_modificar=htmlspecialchars(strip_tags($this->; 
+            $this->grupo_alta=htmlspecialchars(strip_tags($this->; 
+            $this->grupo_baja=htmlspecialchars(strip_tags($this->; 
+            $this->grupo_consulta=htmlspecialchars(strip_tags($this->; 
+            $this->grupo_modificar=htmlspecialchars(strip_tags($this->; 
+            $this->role_alta=htmlspecialchars(strip_tags($this->; 
+            $this->role_baja=htmlspecialchars(strip_tags($this->;
+            $this->role_consulta=htmlspecialchars(strip_tags($this->;
+            $this->role_modificar=htmlspecialchars(strip_tags($this->;
+            $this->grupo_persona_alta=htmlspecialchars(strip_tags($this->;
+            $this->grupo_persona_baja=htmlspecialchars(strip_tags($this->;
+            $this->grupo_persona_consulta=htmlspecialchars(strip_tags($this->;
+            $this->grupo_persona_modificar=htmlspecialchars(strip_tags($this->;
+            $this->audit_alta=htmlspecialchars(strip_tags($this->;
+            $this->audit_modificar=htmlspecialchars(strip_tags($this->;
+            $this->audit_baja=htmlspecialchars(strip_tags($this->; 
+            $this->audit_consulta=htmlspecialchars(strip_tags($this->;
            
         
             // bind data Completar campos
